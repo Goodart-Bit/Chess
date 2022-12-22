@@ -1,16 +1,23 @@
 # frozen_string_literal: true
 
 # Board Chess Class
-class Board
-  COLS = (0..7).freeze
-  LIMIT = COLS.size - 1
-  attr_reader :squares
-
-  def initialize(dimensions = 8)
-    @dimensions = dimensions - 1
-    @squares = {} # POSITION => piece or => nil if square is empty. Ex: [0,0] => Queen
+class Board < Hash
+  DIMENSIONS = 8
+  def to_s
+    board_st = ''
+    (DIMENSIONS - 1).downto(0) do |row|
+      0.upto(DIMENSIONS - 1) do |col|
+        square_piece = self[[col, row]].nil? ? '  ' : self[[col, row]].to_s
+        board_st += " [#{square_piece.center(3)}] "
+      end
+      board_st += "\n"
+    end
+    board_st
   end
 
+  # TODO: ERASE BELOW
+
+  <<-DOC
   def place_piece(piece, pos = [0, 0])
     return unless valid_input?(pos)
 
@@ -31,14 +38,5 @@ class Board
       COLS.include?(pos[0]) && COLS.include?(pos[1])
     end
   end
-
-  def print_board
-    LIMIT.downto(0) do |row|
-      0.upto(LIMIT) do |col|
-        square_piece = @squares[[col, row]].nil? ? '  ' : @squares[[col, row]].to_s
-        print(" [#{square_piece.center(3)}] ")
-      end
-      puts('')
-    end
-  end
+  DOC
 end
