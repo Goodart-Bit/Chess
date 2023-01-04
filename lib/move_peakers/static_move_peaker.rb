@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Piece Movement Module for statically movable pieces
+# Piece Movement Module for statically movable piece types
 module StaticMovePeaker
   def peak(direction, pos, length, limit = 7)
     peaked_pos = case direction
