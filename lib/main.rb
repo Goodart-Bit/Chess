@@ -3,4 +3,4 @@
 require_relative 'game'
 
 game = Game.new
-game.print_turn_game
+game.play
