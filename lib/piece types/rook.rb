@@ -6,8 +6,7 @@ class Rook < Piece
   include DynamicMovePeaker
 
   def get_possible_moves(pos)
-    feasible_moves = peak_sides(pos, MOVE_LIMIT)
-    filter_possible_moves(feasible_moves)
+    peak_sides(pos, MOVE_LIMIT)
   end
 
   def to_s
